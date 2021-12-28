@@ -18,8 +18,6 @@ import java.util.concurrent.ConcurrentHashMap;
 @RequiredArgsConstructor
 public class SseResource {
 
-    private static final Map<String, SseEmitter> CLIENTS = new ConcurrentHashMap<>();
-
     private final SseService sseService;
 
     @GetMapping(value = "/resource-uri")
@@ -34,29 +32,12 @@ public class SseResource {
 
     @GetMapping("/api/subscribe")
     public SseEmitter subscribe(String id) {
-        SseEmitter emitter = new SseEmitter();
-        CLIENTS.put(id, emitter);
-
-        emitter.onTimeout(() -> CLIENTS.remove(id));
-        emitter.onCompletion(() -> CLIENTS.remove(id));
-        return emitter;
+        return sseService.onSubscribe(id);
     }
 
     @GetMapping("/api/publish")
     public void publish(String message) {
-        Set<String> deadIds = new HashSet<>();
-
-        CLIENTS.forEach((id, emitter) -> {
-            try {
-                log.info("message :: {}", message);
-                emitter.send(message, MediaType.APPLICATION_JSON);
-            } catch (Exception e) {
-                deadIds.add(id);
-                log.warn("disconnected id : {}", id);
-            }
-        });
-
-        deadIds.forEach(CLIENTS::remove);
+        sseService.onPublish(message);
     }
 
 }
