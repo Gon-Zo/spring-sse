@@ -27,6 +27,8 @@ public class SseService {
 
     private static final Map<String, SseEmitter> CLIENTS = new ConcurrentHashMap<>();
 
+    private static final Map<String, SseEmitter> GROUP_CAHNEL = new ConcurrentHashMap<>();
+
     private final DataSetRepository dataSetRepository;
 
     public SseEmitter baseEvent() {
@@ -99,6 +101,27 @@ public class SseService {
         }
     }
 
+    /**
+     * 그룹 체널을 만들어서 구독 한다?
+     *
+     * @param groupId
+     * @return
+     */
+    public SseEmitter onSubscribeByGroup(String groupId) {
+
+        log.info("구독 시작");
+
+        SseEmitter emitter = new SseEmitter();
+
+        GROUP_CAHNEL.put(groupId, emitter);
+
+        emitter.onTimeout(() -> GROUP_CAHNEL.remove(groupId));
+
+        emitter.onCompletion(() -> GROUP_CAHNEL.remove(groupId));
+
+        return emitter;
+    }
+
     public SseEmitter onSubscribe(String id) {
         SseEmitter emitter = new SseEmitter();
         CLIENTS.put(id, emitter);
@@ -108,7 +131,7 @@ public class SseService {
         return emitter;
     }
 
-    public void onPublish(String message){
+    public void onPublish(String message) {
         Set<String> deadIds = new HashSet<>();
 
         CLIENTS.forEach((id, emitter) -> {

@@ -20,12 +20,12 @@ public class SseResource {
 
     private final SseService sseService;
 
-    @GetMapping(value = "/resource-uri")
+    @GetMapping(value = "/api/resource-uri")
     public SseEmitter handle() {
         return sseService.baseEvent();
     }
 
-    @GetMapping(value = "fetch-dataset")
+    @GetMapping(value = "/api/fetch-dataset")
     public SseEmitter fetchDataSet() {
         return sseService.fetchDataSet();
     }
@@ -38,6 +38,11 @@ public class SseResource {
     @GetMapping("/api/publish")
     public void publish(String message) {
         sseService.onPublish(message);
+    }
+
+    @GetMapping("/api/subscribe-group")
+    public SseEmitter onSubscribeByGroup(String groupId){
+        return sseService.onSubscribeByGroup(groupId);
     }
 
 }
