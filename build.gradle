@@ -39,16 +39,28 @@ subprojects {
         annotationProcessor 'org.projectlombok:lombok'
         testImplementation 'org.springframework.boot:spring-boot-starter-test'
         implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    }
+}
+
+project(":common") {
+    dependencies {
         implementation 'com.h2database:h2'
     }
 }
 
 project(":spring-sse") {
     dependencies {
+        implementation project(":common")
         implementation("org.infinispan:infinispan-core:12.0.1.Final")
         implementation("org.infinispan:infinispan-commons:12.0.1.Final")
         implementation("org.infinispan:infinispan-marshaller-protostuff:12.0.1.Final")
         implementation("org.jboss.marshalling:jboss-marshalling-osgi:2.0.10.Final")
+    }
+}
+
+project(':spring-mvc') {
+    dependencies {
+        implementation project(":common")
     }
 }
 
