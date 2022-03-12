@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group 'com.example.springweb'
+group 'com.example'
 version '0.0.1-SNAPSHOT'
 
 repositories {
@@ -18,8 +18,6 @@ jar {
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.2'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.2'
 }
 
 test {
