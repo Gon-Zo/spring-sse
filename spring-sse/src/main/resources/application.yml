@@ -1,2 +1,8 @@
 server:
   port: 20006
+
+spring:
+  application:
+    name: spring-sse
+  profiles:
+    active: h2, jpa

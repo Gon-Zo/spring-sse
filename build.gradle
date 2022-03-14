@@ -41,6 +41,7 @@ subprojects {
         implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
         testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.2'
         testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.2'
+        annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
     }
 }
 
@@ -52,7 +53,7 @@ project(":common") {
 
 project(":spring-sse") {
     dependencies {
-        implementation project(":common")
+        implementation project(path: ":common", configuration: 'default')
         implementation("org.infinispan:infinispan-core:12.0.1.Final")
         implementation("org.infinispan:infinispan-commons:12.0.1.Final")
         implementation("org.infinispan:infinispan-marshaller-protostuff:12.0.1.Final")
@@ -62,7 +63,7 @@ project(":spring-sse") {
 
 project(':spring-mvc') {
     dependencies {
-        implementation project(":common")
+        implementation project(path: ":common", configuration: 'default')
     }
 }
 

@@ -10,15 +10,10 @@ repositories {
 }
 
 bootJar {
-    enabled = false
-}
-
-jar {
     enabled = true
 }
 
-dependencies {
-}
+dependencies {}
 
 test {
     useJUnitPlatform()

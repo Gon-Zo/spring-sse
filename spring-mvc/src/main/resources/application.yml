@@ -4,3 +4,5 @@ server:
 spring:
   application:
     name: spring-mvc
+  profiles:
+    active: h2
