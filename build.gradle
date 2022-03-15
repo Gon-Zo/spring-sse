@@ -34,11 +34,10 @@ subprojects {
     // 공통 의존성
     dependencies {
         implementation 'org.springframework.boot:spring-boot-starter-web'
-        compileOnly 'org.projectlombok:lombok'
         developmentOnly 'org.springframework.boot:spring-boot-devtools'
+        compileOnly 'org.projectlombok:lombok'
         annotationProcessor 'org.projectlombok:lombok'
         testImplementation 'org.springframework.boot:spring-boot-starter-test'
-        implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
         testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.2'
         testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.2'
         annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
@@ -47,6 +46,7 @@ subprojects {
 
 project(":common") {
     dependencies {
+        implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
         implementation 'com.h2database:h2'
     }
 }
@@ -64,6 +64,11 @@ project(":spring-sse") {
 project(':spring-mvc') {
     dependencies {
         implementation project(path: ":common", configuration: 'default')
+    }
+}
+
+project(':spring-forkjoinpool') {
+    dependencies {
     }
 }
 

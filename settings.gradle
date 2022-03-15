@@ -8,6 +8,7 @@ pluginManagement {
 
 rootProject.name = 'tutorials'
 
-include 'spring-sse'
-include 'common'
-include 'spring-mvc'
+include('spring-sse'
+        , 'common'
+        , 'spring-mvc'
+, 'spring-forkjoinpool')
