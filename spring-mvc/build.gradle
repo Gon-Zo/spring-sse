@@ -13,7 +13,10 @@ bootJar {
     enabled = true
 }
 
-dependencies {}
+dependencies {
+//    implementation 'com.github.noveltaker.health-check-servlet:health-check-servlet-action:0.0.5-SNAPSHOT'
+//    implementation 'com.github.noveltaker:health-check-servlet:0.0.5-SNAPSHOT'
+}
 
 test {
     useJUnitPlatform()

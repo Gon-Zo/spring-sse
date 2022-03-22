@@ -71,3 +71,9 @@ project(':spring-forkjoinpool') {
     dependencies {
     }
 }
+
+project(':spring-querydsl') {
+    dependencies {
+        implementation project(path: ":common", configuration: 'default')
+    }
+}

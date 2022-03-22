@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: demo
+  profiles:
+    active: h2
+
+  jpa:
+    open-in-view: false

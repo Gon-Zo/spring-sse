@@ -11,4 +11,5 @@ rootProject.name = 'tutorials'
 include('spring-sse'
         , 'common'
         , 'spring-mvc'
-        , 'spring-forkjoinpool')
+        , 'spring-forkjoinpool'
+        , 'spring-querydsl')
