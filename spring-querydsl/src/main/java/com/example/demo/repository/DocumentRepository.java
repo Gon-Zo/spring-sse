@@ -14,6 +14,12 @@ public interface DocumentRepository
 
   <T> Optional<T> findById(Long id, Class<T> type);
 
-  @EntityGraph(attributePaths = {"paymentCommentSet"})
+  @EntityGraph(
+      attributePaths = {
+        "user",
+        "paymentCommentSet",
+        "paymentCommentSet.user",
+        "paymentCommentSet.document"
+      })
   <T> Optional<T> findByUser_Id(Long userId, Class<T> type);
 }

@@ -37,4 +37,8 @@ public class Division {
   public int hashCode() {
     return Objects.hash(code);
   }
+
+  public Division(String code) {
+    this.code = code;
+  }
 }

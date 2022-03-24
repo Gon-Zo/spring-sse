@@ -1,8 +1,8 @@
 package com.example.demo.domain;
 
 import com.example.demo.enums.StateEnum;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -12,7 +12,7 @@ import java.util.Set;
 @Getter
 @Table
 @Entity
-@Builder(builderClassName = "allBuilder", builderMethodName = "allBuilder")
+@DynamicUpdate
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Document extends BaseTimeColumn {
@@ -32,16 +32,19 @@ public class Document extends BaseTimeColumn {
   @JoinColumn(name = "division_code", nullable = false)
   private Division division;
 
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "user_id", nullable = false)
   private User user;
 
-  @Column(nullable = false , name = "document_state")
+  @Column(nullable = false, name = "document_state")
   private StateEnum state;
+
+  @Column(nullable = false, name = "document_step")
+  private Integer step;
 
   @OneToMany(
       fetch = FetchType.LAZY,
-      cascade = {CascadeType.PERSIST},
+      cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
       mappedBy = "document")
   private Set<PaymentComment> paymentCommentSet = new HashSet<>();
 
@@ -59,12 +62,30 @@ public class Document extends BaseTimeColumn {
   }
 
   @Builder(builderMethodName = "initBuilder", builderClassName = "initBuilder")
-  private Document(Long id, String title, String content, User user, Division division , StateEnum state) {
+  private Document(Long id, String title, String content, User user, Division division) {
     this.id = id;
     this.title = title;
     this.content = content;
     this.user = user;
     this.division = division;
-    this.state = state;
+  }
+
+  @PrePersist
+  @PostLoad
+  void prePersist() {
+    this.step = 1;
+    this.state = StateEnum.DEFAULT;
+  }
+
+  public void approveState(){
+    this.state = StateEnum.OK;
+  }
+
+  public void refuseState(){
+    this.state = StateEnum.NO;
+  }
+
+  public void proceedState() {
+    this.step += 1;
   }
 }

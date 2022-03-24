@@ -1,6 +1,7 @@
 package com.example.demo.domain;
 
 import com.example.demo.enums.StateEnum;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -16,16 +17,31 @@ public class PaymentComment {
 
   @EmbeddedId private PaymentCommentKey id;
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @JsonIgnore
+  @ManyToOne(
+      fetch = FetchType.LAZY,
+      cascade = {CascadeType.REMOVE})
   @MapsId("documentId")
+  @JoinColumn(
+      name = "document_id",
+      referencedColumnName = "id",
+      insertable = false,
+      updatable = false)
   private Document document;
 
-  @ManyToOne
+  @JsonIgnore
+  @ManyToOne(
+      fetch = FetchType.LAZY,
+      cascade = {CascadeType.REMOVE})
   @MapsId("userId")
+  @JoinColumn(name = "user_id", referencedColumnName = "id", insertable = false, updatable = false)
   private User user;
 
   @Column(nullable = false, name = "payment_state")
   private StateEnum state;
+
+  @Column(nullable = false, name = "payment_step")
+  private Integer step;
 
   @Lob private String comment;
 
@@ -40,5 +56,23 @@ public class PaymentComment {
   @Override
   public int hashCode() {
     return Objects.hash(id);
+  }
+
+  @Builder(builderClassName = "initBuilder", builderMethodName = "initBuilder")
+  private PaymentComment(Long documentId, Long userId, Integer step) {
+    this.id = PaymentCommentKey.allBuilder().documentId(documentId).userId(userId).build();
+    this.step = step;
+  }
+
+  @PostLoad
+  @PrePersist
+  void prePersist() {
+    this.state = StateEnum.DEFAULT;
+  }
+
+  @Transient
+  public void updateCommentAndState(String comment, StateEnum state) {
+    this.state = state;
+    this.comment = comment;
   }
 }

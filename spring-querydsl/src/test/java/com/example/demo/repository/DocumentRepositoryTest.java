@@ -6,10 +6,13 @@ import com.example.demo.domain.Document;
 import com.example.demo.domain.PaymentComment;
 import com.example.demo.domain.User;
 import com.example.demo.domain.projection.IDocument;
+import com.example.demo.enums.StateEnum;
 import com.example.demo.mock.DivisionMock;
 import com.example.demo.mock.DocumentMock;
 import com.example.demo.mock.PaymentCommentMock;
 import com.example.demo.mock.UserMock;
+import com.example.demo.repository.support.boxaction.BoxActionFactory;
+import com.example.demo.repository.support.boxaction.BoxType;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
@@ -62,7 +65,7 @@ class DocumentRepositoryTest {
     Document entity = documentRepository.save(mock);
 
     List<PaymentComment> paymentCommentList =
-        PaymentCommentMock.createPaymentCommentList(otherUsers, entity);
+        PaymentCommentMock.createPaymentCommentListToInit(otherUsers, entity);
 
     entity.getPaymentCommentSet().addAll(paymentCommentList);
 
@@ -75,6 +78,8 @@ class DocumentRepositoryTest {
     Assertions.assertEquals(mock.getContent(), entity.getContent());
     Assertions.assertEquals(mock.getUser(), entity.getUser());
     Assertions.assertEquals(mock.getPaymentCommentSet(), entity.getPaymentCommentSet());
+    Assertions.assertEquals(entity.getStep(), 1);
+    Assertions.assertEquals(entity.getState(), StateEnum.DEFAULT);
   }
 
   @Nested
@@ -137,11 +142,32 @@ class DocumentRepositoryTest {
     }
 
     @Test
-    void page_querydsl() {
+    void findBy_OutBox() {
 
       PageRequest pageable = PageRequest.of(0, 10);
 
-      documentRepository.findAllQuery(pageable, user.getId());
+      BoxActionFactory factory = new BoxActionFactory().getBoxAction(BoxType.OUTBOX, user.getId());
+
+      documentRepository.findByBoxAction(pageable, factory);
+    }
+
+    @Test
+    void findBy_InBox() {
+
+      PageRequest pageable = PageRequest.of(0, 10);
+
+      BoxActionFactory factory = new BoxActionFactory().getBoxAction(BoxType.INBOX, user.getId());
+
+      documentRepository.findByBoxAction(pageable, factory);
+    }
+
+    @Test
+    void findBy_Archive() {
+      PageRequest pageable = PageRequest.of(0, 10);
+
+      BoxActionFactory factory = new BoxActionFactory().getBoxAction(BoxType.ARCHIVE, user.getId());
+
+      documentRepository.findByBoxAction(pageable, factory);
     }
   }
 }

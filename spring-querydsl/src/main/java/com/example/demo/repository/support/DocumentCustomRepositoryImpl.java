@@ -1,9 +1,9 @@
 package com.example.demo.repository.support;
 
 import com.example.demo.domain.Document;
-import com.example.demo.domain.projection.CommentProjection;
-import com.example.demo.domain.projection.DocumentProjection;
-import com.example.demo.enums.StateEnum;
+import com.example.demo.domain.projection.PaymentCommentInfo;
+import com.example.demo.domain.projection.DocumentInfo;
+import com.example.demo.repository.support.boxaction.BoxActionFactory;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -33,7 +33,7 @@ public class DocumentCustomRepositoryImpl extends QuerydslRepositorySupport
   }
 
   @Override
-  public Page<DocumentProjection> findAllQuery(Pageable pageable, Long userId) {
+  public Page<DocumentInfo> findByBoxAction(Pageable pageable, BoxActionFactory factory) {
 
     JPAQuery<Document> query =
         jpaQueryFactory
@@ -41,25 +41,15 @@ public class DocumentCustomRepositoryImpl extends QuerydslRepositorySupport
             .innerJoin(document.user, user)
             .innerJoin(document.division, division)
             .leftJoin(document.paymentCommentSet, paymentComment)
+            .where(factory.getBoxListInWhere());
 
-            // active
-            //            .where(document.user.id.eq(userId).or(paymentComment.user.id)
-            // .and(document.state.in(StateEnum.OK, StateEnum.NO)))
-
-            // indox;
-            .where(paymentComment.id.userId.eq(userId).or(document.user.id.eq(userId)))
-            .where(document.state.in(StateEnum.OK, StateEnum.NO))
-        // outbox
-        //            .where(document.user.id.eq(userId).and(document.state.eq(StateEnum.NONE)));
-        ;
-
-    List<DocumentProjection> result =
+    List<DocumentInfo> result =
         query
             .transform(
                 groupBy(document.id)
                     .list(
                         Projections.fields(
-                            DocumentProjection.class,
+                            DocumentInfo.class,
                             document.id,
                             document.title,
                             document.content,
@@ -68,10 +58,14 @@ public class DocumentCustomRepositoryImpl extends QuerydslRepositorySupport
                             document.user.email.as("writer"),
                             document.division.name.as("divisionName"),
                             document.state.as("state"),
+                            document.step,
                             list(Projections.fields(
-                                    CommentProjection.class,
-                                    paymentComment.id.documentId.as("documentId"),
-                                    paymentComment.id.userId.as("userId")))
+                                    PaymentCommentInfo.class,
+                                    paymentComment.id.userId.as("userId"),
+                                    paymentComment.user.email.as("userEmail"),
+                                    paymentComment.comment,
+                                    paymentComment.step,
+                                    paymentComment.state))
                                 .as("paymentCommentSet"))))
             .stream()
             .skip(pageable.getOffset())
@@ -81,11 +75,5 @@ public class DocumentCustomRepositoryImpl extends QuerydslRepositorySupport
     long total = query.fetchCount();
 
     return new PageImpl<>(result, pageable, total);
-  }
-
-  @Override
-  public Page<DocumentProjection> findByAllQuery2(Pageable pageable) {
-
-    return null;
   }
 }

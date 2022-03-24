@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 @Getter
-public class DocumentProjection {
+public class DocumentInfo {
 
   private Long id;
 
@@ -25,5 +25,7 @@ public class DocumentProjection {
 
   private StateEnum state;
 
-  private List<CommentProjection> paymentCommentSet;
+  private Integer step;
+
+  private List<PaymentCommentInfo> paymentCommentSet;
 }
