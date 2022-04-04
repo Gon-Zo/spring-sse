@@ -12,4 +12,6 @@ include('spring-sse'
         , 'common'
         , 'spring-mvc'
         , 'spring-forkjoinpool'
-        , 'spring-querydsl')
+        , 'spring-querydsl'
+        , 'spring-transaction'
+)

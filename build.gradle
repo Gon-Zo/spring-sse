@@ -77,3 +77,9 @@ project(':spring-querydsl') {
         implementation project(path: ":common", configuration: 'default')
     }
 }
+
+project(':spring-transaction') {
+    dependencies {
+        implementation project(path: ":common", configuration: 'default')
+    }
+}
