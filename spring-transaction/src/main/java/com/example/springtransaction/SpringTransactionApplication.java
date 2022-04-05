@@ -4,10 +4,10 @@ import com.example.common.config.db.LocalDBConstants;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.retry.annotation.EnableRetry;
 
+@EnableRetry
 @SpringBootApplication
-@EnableTransactionManagement
 @ComponentScan(
     basePackages = {"com.example.springtransaction", LocalDBConstants.LOCAL_DB_SCAN_PATH})
 public class SpringTransactionApplication {

@@ -81,5 +81,6 @@ project(':spring-querydsl') {
 project(':spring-transaction') {
     dependencies {
         implementation project(path: ":common", configuration: 'default')
+        implementation 'org.springframework.retry:spring-retry'
     }
 }

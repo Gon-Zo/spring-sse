@@ -39,7 +39,8 @@ public class Product {
   @MapKey(name = "id")
   private Set<ProductUser> productUserSet = new HashSet<>();
 
-  @Version private Integer version;
+  @Version
+  private Integer version;
 
   @Builder(builderClassName = "initBuilder", builderMethodName = "initBuilder")
   private Product(Long id, String title, String content) {

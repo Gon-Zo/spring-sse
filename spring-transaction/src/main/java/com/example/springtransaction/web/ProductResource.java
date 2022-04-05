@@ -5,6 +5,7 @@ import com.example.springtransaction.service.ProductService;
 import com.example.springtransaction.service.dto.InitDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -17,7 +18,13 @@ public class ProductResource {
   @PutMapping("/product")
   public ResponseEntity<State> initProductUser(
       @RequestBody InitDTO dto, @RequestHeader("X-USER-ID") Long userId) {
-    State body = productService.initProductByUser(dto, userId);
+    State body;
+//    try {
+      body = productService.initProductByUser(dto, userId);
+//    }
+//    catch (ObjectOptimisticLockingFailureException e) {
+//      body = productService.initProductByUser(dto, userId);
+//    }
     return ResponseEntity.ok(body);
   }
 }

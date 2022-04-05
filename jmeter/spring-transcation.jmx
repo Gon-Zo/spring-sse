@@ -42,7 +42,7 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-	&quot;productId&quot;: 1,&#xd;
+	&quot;productId&quot;: 2,&#xd;
 	&quot;amount&quot; : 100&#xd;
 }&#xd;
 </stringProp>
