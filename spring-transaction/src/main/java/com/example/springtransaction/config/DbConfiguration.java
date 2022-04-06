@@ -1,22 +1,18 @@
 package com.example.springtransaction.config;
 
-// import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-// import org.springframework.jdbc.datasource.DataSourceTransactionManager;
-// import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-// import javax.sql.DataSource;
+import javax.persistence.EntityManagerFactory;
 
 @Configuration
 @EnableTransactionManagement
 public class DbConfiguration {
 
-  //  @Bean(name = "transactionManager")
-  //  public PlatformTransactionManager dataSourceTransactionManager(DataSource dataSource) {
-  //    DataSourceTransactionManager dataSourceTransactionManager = new
-  // DataSourceTransactionManager();
-  //    dataSourceTransactionManager.setDataSource(dataSource);
-  //    return dataSourceTransactionManager;
-  //  }
+  @Bean
+  public JpaTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
+    return new JpaTransactionManager(entityManagerFactory);
+  }
 }

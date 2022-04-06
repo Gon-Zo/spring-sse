@@ -82,5 +82,7 @@ project(':spring-transaction') {
     dependencies {
         implementation project(path: ":common", configuration: 'default')
         implementation 'org.springframework.retry:spring-retry'
+        implementation 'org.springframework:spring-aspects'
+        implementation 'org.apache.commons:commons-lang3'
     }
 }

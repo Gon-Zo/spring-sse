@@ -6,5 +6,4 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ProductUserRepository extends JpaRepository<ProductUser, ProductUserKey> {
-}
+public interface ProductUserRepository extends JpaRepository<ProductUser, ProductUserKey> {}

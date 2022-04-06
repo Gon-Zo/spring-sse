@@ -42,7 +42,7 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-	&quot;productId&quot;: 2,&#xd;
+	&quot;productId&quot;: ${product_id},&#xd;
 	&quot;amount&quot; : 100&#xd;
 }&#xd;
 </stringProp>
@@ -202,12 +202,17 @@
           </elementProp>
           <elementProp name="user_number" elementType="Argument">
             <stringProp name="Argument.name">user_number</stringProp>
-            <stringProp name="Argument.value">10</stringProp>
+            <stringProp name="Argument.value">10000</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="loop_cnt" elementType="Argument">
             <stringProp name="Argument.name">loop_cnt</stringProp>
             <stringProp name="Argument.value">1</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="product_id" elementType="Argument">
+            <stringProp name="Argument.name">product_id</stringProp>
+            <stringProp name="Argument.value">4</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>

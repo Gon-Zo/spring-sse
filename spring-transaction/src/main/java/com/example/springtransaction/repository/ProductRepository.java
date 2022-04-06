@@ -14,7 +14,7 @@ import java.util.Optional;
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
   @Override
-  @QueryHints({@QueryHint(name = "javax.persistence.lock.timeout", value = "30000")})
-  @Lock(value = LockModeType.PESSIMISTIC_FORCE_INCREMENT)
+  @Lock(LockModeType.OPTIMISTIC_FORCE_INCREMENT)
+  @QueryHints({@QueryHint(name = "javax.persistence.lock.timeout", value = "3000")})
   Optional<Product> findById(Long aLong);
 }
