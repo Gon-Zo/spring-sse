@@ -1,8 +1,6 @@
 package com.example.springtransaction.service.dto;
 
-import com.example.springtransaction.domain.Product;
-import com.example.springtransaction.domain.ProductUser;
-import com.example.springtransaction.domain.ProductUserKey;
+import com.example.springtransaction.domain.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,5 +17,10 @@ public class InitDTO {
   public ProductUser toEntity(Long userId, Product product) {
     ProductUserKey id = ProductUserKey.builder().productId(productId).userId(userId).build();
     return ProductUser.initBuilder().id(id).amount(this.amount).product(product).build();
+  }
+
+  public ItemUser toEntity(Long userId, Item item) {
+    ItemUserKey id = ItemUserKey.builder().itemId(productId).userId(userId).build();
+    return ItemUser.initBuilder().id(id).amount(this.amount).item(item).build();
   }
 }
