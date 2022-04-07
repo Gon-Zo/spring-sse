@@ -1,6 +1,7 @@
 package com.example.springtransaction.web;
 
 import com.example.springtransaction.constract.State;
+import com.example.springtransaction.service.ItemService;
 import com.example.springtransaction.service.ProductService;
 import com.example.springtransaction.service.dto.InitDTO;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +17,8 @@ public class ProductResource {
 
   private final ProductService productService;
 
+  private final ItemService itemService;
+
   @PutMapping("/product")
   public ResponseEntity<State> initProductUser(
       @RequestBody InitDTO dto, @RequestHeader("X-USER-ID") Long userId) {
@@ -23,8 +26,15 @@ public class ProductResource {
     return ResponseEntity.ok(body);
   }
 
+  @PutMapping("/item")
+  public ResponseEntity<State> initItemUser(
+      @RequestBody InitDTO dto, @RequestHeader("X-USER-ID") Long userId) {
+    State body = itemService.initUser(dto, userId);
+    return ResponseEntity.ok(body);
+  }
+
   @GetMapping("/test")
-  public ResponseEntity<Long> test(@RequestHeader("X-USER-ID") Long userId) {
+  public ResponseEntity<Long> testAPI(@RequestHeader("X-USER-ID") Long userId) {
 
     long start = System.currentTimeMillis();
 
