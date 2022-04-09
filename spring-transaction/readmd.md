@@ -1,6 +1,8 @@
 //https://incheol-jung.gitbook.io/docs/study/jpa/16
 //https://4whomtbts.tistory.com/118
 //https://medium.com/javarevisited/spring-beans-in-depth-a6d8b31db8a1
+//https://www.eginnovations.com/blog/tomcat-monitoring-metrics/
+//https://codedragon.tistory.com/3529
 
 
 INSERT INTO PUBLIC.PRODUCT (CONTENT, CURRENT_AMOUNT, TITLE, TOTAL_AMOUNT, STATE, version)

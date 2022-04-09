@@ -33,6 +33,12 @@ public class ProductResource {
     return ResponseEntity.ok(body);
   }
 
+  @PutMapping("/item2")
+  public Integer initItemUser2(@RequestBody InitDTO dto, @RequestHeader("X-USER-ID") Long userId) {
+    Integer body = itemService.updateState(dto, userId);
+    return body;
+  }
+
   @GetMapping("/test")
   public ResponseEntity<Long> testAPI(@RequestHeader("X-USER-ID") Long userId) {
 
