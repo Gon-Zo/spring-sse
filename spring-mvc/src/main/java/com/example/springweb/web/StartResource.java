@@ -3,7 +3,6 @@ package com.example.springweb.web;
 import com.example.springweb.domain.CurrentDate;
 import com.example.springweb.repository.CurrentRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
