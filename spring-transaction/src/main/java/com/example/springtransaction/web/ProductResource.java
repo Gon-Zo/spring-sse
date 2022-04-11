@@ -50,4 +50,10 @@ public class ProductResource {
 
     return ResponseEntity.ok(userId);
   }
+
+  @GetMapping("/hash-code")
+  public ResponseEntity<Long> hashCodeAPI(@RequestHeader("X-USER-ID") Long userId) {
+    log.info("[hashCode]:{}", this.hashCode());
+    return ResponseEntity.ok(userId);
+  }
 }
