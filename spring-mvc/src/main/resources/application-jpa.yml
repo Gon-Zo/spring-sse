@@ -17,7 +17,7 @@ spring:
       hibernate.format_sql: true
       hibernate.jdbc.lob.non_contextual_creation: true
     show-sql: true
-    open-in-view: true
+    open-in-view: false
 
   logging:
     level:

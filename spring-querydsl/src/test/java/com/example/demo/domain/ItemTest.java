@@ -63,7 +63,5 @@ class ItemTest {
   @DisplayName("영속성")
   class Managed {
 
-    Tran
-
   }
 }
