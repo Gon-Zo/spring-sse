@@ -18,6 +18,7 @@ class ItemTest {
   @Autowired EntityManagerFactory entityManagerFactory;
 
   @Nested
+  // 영속성 ex
   @DisplayName("영속성 hashcode 관계")
   class HashCode {
 
@@ -39,14 +40,14 @@ class ItemTest {
 
       entityManager.clear();
 
-      Item item = entityManager.find(Item.class, mock.getId());
+      Item entity = entityManager.find(Item.class, mock.getId());
 
-      Assertions.assertEquals(item, mock);
+      Assertions.assertEquals(entity, mock);
       // hashCode 비교
-      Assertions.assertEquals(item.hashCode(), mock.hashCode());
+      Assertions.assertEquals(entity.hashCode(), mock.hashCode());
     }
   }
-//  https://hyeooona825.tistory.com/87
+
   @Nested
   @DisplayName("비영속성")
   class New {
@@ -60,8 +61,26 @@ class ItemTest {
   }
 
   @Nested
-  @DisplayName("영속성")
-  class Managed {
+  @DisplayName("준영속성")
+  class Detached {
 
+    @Test
+    @DisplayName("준영속성 테스트 케이스")
+    void detached() {
+
+      EntityManager entityManager = entityManagerFactory.createEntityManager();
+
+      EntityTransaction transaction = entityManager.getTransaction();
+
+      Item mock = Item.builder().name("test1").build();
+
+      transaction.begin();
+
+      entityManager.detach(mock);
+
+      transaction.commit();
+
+      entityManager.clear();
+    }
   }
 }
