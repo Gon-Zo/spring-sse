@@ -12,6 +12,8 @@ buildscript {
     }
 }
 
+
+
 subprojects {
     apply plugin: 'java'
     apply plugin: 'org.springframework.boot'
@@ -64,6 +66,11 @@ project(":spring-sse") {
 project(':spring-mvc') {
     dependencies {
         implementation project(path: ":common", configuration: 'default')
+    }
+}
+
+project(':spring-core') {
+    dependencies {
     }
 }
 
