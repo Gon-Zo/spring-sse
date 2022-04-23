@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Profile("B")
 @Component("action")
-public class BAction extends AbstractAction {
+public final class BAction extends AbstractAction {
 
   BAction(BusinessService businessService) {
     super(businessService);
