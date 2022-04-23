@@ -9,7 +9,7 @@ public abstract class AbstractAction implements Action {
     this.businessService = businessService;
   }
 
-  public BusinessService getBusinessService() {
+  public BusinessService getBusinessService(){
     return businessService;
   }
 }
