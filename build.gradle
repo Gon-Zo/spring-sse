@@ -71,6 +71,7 @@ project(':spring-mvc') {
 
 project(':spring-core') {
     dependencies {
+        implementation project(path: ":common", configuration: 'default')
     }
 }
 
