@@ -45,3 +45,5 @@ select 500 / 100
 select 1000 * 100
 ;
 
+
+//https://ljtaek2.tistory.com/142

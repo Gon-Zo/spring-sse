@@ -11,6 +11,7 @@ public class ThreadConfiguration {
   public ForkJoinPoolFactoryBean forkJoinPoolFactoryBean() {
     ForkJoinPoolFactoryBean pool = new ForkJoinPoolFactoryBean();
     int processors = Runtime.getRuntime().availableProcessors();
+    //
     pool.setParallelism(processors);
     return pool;
   }

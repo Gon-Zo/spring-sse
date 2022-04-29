@@ -1,6 +1,3 @@
-server:
-  port: 28000
-
 spring:
   application:
     name: spring-mvc

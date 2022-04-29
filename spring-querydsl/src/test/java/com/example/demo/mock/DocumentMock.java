@@ -3,7 +3,7 @@ package com.example.demo.mock;
 import com.example.demo.domain.Document;
 import com.example.demo.domain.PaymentComment;
 import com.example.demo.domain.User;
-import com.example.demo.repository.support.boxaction.BoxType;
+import com.example.demo.repository.support.boxbuilder.BoxType;
 import com.example.demo.service.dto.DocumentBoxDTO;
 import com.example.demo.service.dto.DocumentDTO;
 

@@ -4,7 +4,7 @@ import com.example.demo.domain.Document;
 import com.example.demo.domain.User;
 import com.example.demo.domain.projection.DocumentInfo;
 import com.example.demo.repository.DocumentRepository;
-import com.example.demo.repository.support.boxaction.BoxActionFactory;
+import com.example.demo.repository.support.boxbuilder.BoxBuilderFactory;
 import com.example.demo.service.dto.DocumentBoxDTO;
 import com.example.demo.service.dto.DocumentDTO;
 import lombok.RequiredArgsConstructor;
@@ -33,11 +33,12 @@ public class DocumentServiceImpl implements DocumentService {
   }
 
   @Override
+  @Transactional(rollbackFor = Exception.class, readOnly = true)
   public Page<DocumentInfo> getDocumentBoxList(DocumentBoxDTO dto, User user) {
 
     PageRequest pageable = PageRequest.of(dto.getPage(), dto.getSize());
 
-    BoxActionFactory factory = new BoxActionFactory().getBoxAction(dto.getType(), user.getId());
+    BoxBuilderFactory factory = new BoxBuilderFactory().getBoxAction(dto.getType(), user.getId());
 
     return documentRepository.findByBoxAction(pageable, factory);
   }

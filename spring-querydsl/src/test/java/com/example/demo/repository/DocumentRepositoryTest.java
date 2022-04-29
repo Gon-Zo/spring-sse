@@ -11,8 +11,8 @@ import com.example.demo.mock.DivisionMock;
 import com.example.demo.mock.DocumentMock;
 import com.example.demo.mock.PaymentCommentMock;
 import com.example.demo.mock.UserMock;
-import com.example.demo.repository.support.boxaction.BoxActionFactory;
-import com.example.demo.repository.support.boxaction.BoxType;
+import com.example.demo.repository.support.boxbuilder.BoxBuilderFactory;
+import com.example.demo.repository.support.boxbuilder.BoxType;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
@@ -146,7 +146,8 @@ class DocumentRepositoryTest {
 
       PageRequest pageable = PageRequest.of(0, 10);
 
-      BoxActionFactory factory = new BoxActionFactory().getBoxAction(BoxType.OUTBOX, user.getId());
+      BoxBuilderFactory factory =
+          new BoxBuilderFactory().getBoxAction(BoxType.OUTBOX, user.getId());
 
       documentRepository.findByBoxAction(pageable, factory);
     }
@@ -156,7 +157,7 @@ class DocumentRepositoryTest {
 
       PageRequest pageable = PageRequest.of(0, 10);
 
-      BoxActionFactory factory = new BoxActionFactory().getBoxAction(BoxType.INBOX, user.getId());
+      BoxBuilderFactory factory = new BoxBuilderFactory().getBoxAction(BoxType.INBOX, user.getId());
 
       documentRepository.findByBoxAction(pageable, factory);
     }
@@ -165,7 +166,8 @@ class DocumentRepositoryTest {
     void findBy_Archive() {
       PageRequest pageable = PageRequest.of(0, 10);
 
-      BoxActionFactory factory = new BoxActionFactory().getBoxAction(BoxType.ARCHIVE, user.getId());
+      BoxBuilderFactory factory =
+          new BoxBuilderFactory().getBoxAction(BoxType.ARCHIVE, user.getId());
 
       documentRepository.findByBoxAction(pageable, factory);
     }

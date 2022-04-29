@@ -1,9 +1,9 @@
 package com.example.demo.repository.support;
 
 import com.example.demo.domain.Document;
-import com.example.demo.domain.projection.PaymentCommentInfo;
 import com.example.demo.domain.projection.DocumentInfo;
-import com.example.demo.repository.support.boxaction.BoxActionFactory;
+import com.example.demo.domain.projection.PaymentCommentInfo;
+import com.example.demo.repository.support.boxbuilder.BoxBuilderFactory;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -33,7 +33,7 @@ public class DocumentCustomRepositoryImpl extends QuerydslRepositorySupport
   }
 
   @Override
-  public Page<DocumentInfo> findByBoxAction(Pageable pageable, BoxActionFactory factory) {
+  public Page<DocumentInfo> findByBoxAction(Pageable pageable, BoxBuilderFactory factory) {
 
     JPAQuery<Document> query =
         jpaQueryFactory

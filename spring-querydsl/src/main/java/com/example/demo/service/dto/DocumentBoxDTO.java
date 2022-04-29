@@ -1,6 +1,6 @@
 package com.example.demo.service.dto;
 
-import com.example.demo.repository.support.boxaction.BoxType;
+import com.example.demo.repository.support.boxbuilder.BoxType;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,19 +1,18 @@
-package com.example.demo.repository.support.boxaction;
+package com.example.demo.repository.support.boxbuilder;
 
 import com.example.demo.enums.StateEnum;
 import com.querydsl.core.BooleanBuilder;
 
 import static com.example.demo.domain.QDocument.document;
 
-public class OutBoxAction extends AbstractBoxAction implements IBoxAction {
+public final class OutBoxBuilder extends AbstractBoxBuilder {
 
-  public OutBoxAction(Long userId) {
+  OutBoxBuilder(Long userId) {
     super(userId);
   }
 
   @Override
   public BooleanBuilder getBoxListInWhere() {
-
     BooleanBuilder booleanBuilder = new BooleanBuilder();
 
     Long userId = getUserId();

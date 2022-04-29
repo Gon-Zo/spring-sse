@@ -1,4 +1,4 @@
-package com.example.demo.repository.support.boxaction;
+package com.example.demo.repository.support.boxbuilder;
 
 public enum BoxType {
   OUTBOX,

@@ -1,15 +1,14 @@
-package com.example.demo.repository.support.boxaction;
-
-import static com.example.demo.domain.QDocument.document;
-
-import static com.example.demo.domain.QPaymentComment.paymentComment;
+package com.example.demo.repository.support.boxbuilder;
 
 import com.example.demo.enums.StateEnum;
 import com.querydsl.core.BooleanBuilder;
 
-public class InBoxAction extends AbstractBoxAction implements IBoxAction {
+import static com.example.demo.domain.QDocument.document;
+import static com.example.demo.domain.QPaymentComment.paymentComment;
 
-  public InBoxAction(Long userId) {
+public final class InBoxBuilder extends AbstractBoxBuilder {
+
+  InBoxBuilder(Long userId) {
     super(userId);
   }
 
