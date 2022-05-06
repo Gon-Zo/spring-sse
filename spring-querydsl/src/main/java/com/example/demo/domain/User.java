@@ -1,6 +1,5 @@
 package com.example.demo.domain;
 
-import com.example.demo.domain.convert.RoleEnumConvert;
 import com.example.demo.enums.RoleEnum;
 import lombok.*;
 
@@ -25,7 +24,6 @@ public class User extends BaseTimeColumn {
   @Column(nullable = false, name = "hash_password")
   private String password;
 
-  @Convert(converter = RoleEnumConvert.class)
   @Column(nullable = false, name = "role_name")
   private RoleEnum role;
 
