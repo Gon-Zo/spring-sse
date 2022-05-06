@@ -7,7 +7,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.AsyncConfigurer;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
-import org.springframework.web.context.annotation.RequestScope;
 
 import java.util.concurrent.Executor;
 
@@ -15,9 +14,8 @@ import java.util.concurrent.Executor;
 @Configuration
 public class AsyncConfiguration implements AsyncConfigurer {
 
-  @RequestScope
-  @Bean("threadPool")
   @Override
+  @Bean("threadPool")
   public Executor getAsyncExecutor() {
     ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
     // 기본 생성 스레드 사이즈

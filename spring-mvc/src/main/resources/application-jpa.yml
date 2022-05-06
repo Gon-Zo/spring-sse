@@ -19,7 +19,7 @@ spring:
     show-sql: true
     open-in-view: false
 
-  logging:
-    level:
-      org:
-        hibernate.type.descriptor.sql.BasicBinder: TRACE
+logging:
+  level:
+    org:
+      hibernate.type.descriptor.sql.BasicBinder: TRACE

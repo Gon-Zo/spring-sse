@@ -7,12 +7,6 @@ spring:
     defer-datasource-initialization: true
     hibernate:
       ddl-auto: create-drop
-    dbcp2:
-      test-while-idle: true
-      validation-query: SELECT 1
-    h2:
-      console:
-        enabled: true
   datasource:
     driver-class-name: org.h2.Driver
     hikari:
@@ -20,3 +14,6 @@ spring:
       driver-class-name: org.h2.Driver
       username: sa
       password:
+  h2:
+    console:
+      enabled: true

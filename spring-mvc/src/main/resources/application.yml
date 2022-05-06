@@ -2,9 +2,8 @@ spring:
   application:
     name: spring-mvc
   profiles:
-    active: h2, jpa
-
-## yml jackson format
+    active: h2, jpa, test1
+  ## yml jackson format
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: Asia/Seoul

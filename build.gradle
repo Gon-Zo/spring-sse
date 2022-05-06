@@ -66,6 +66,7 @@ project(":spring-sse") {
 project(':spring-mvc') {
     dependencies {
         implementation project(path: ":common", configuration: 'default')
+        implementation 'org.apache.commons:commons-lang3'
     }
 }
 
