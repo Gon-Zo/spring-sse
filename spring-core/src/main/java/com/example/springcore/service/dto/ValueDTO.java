@@ -1,4 +1,4 @@
-package com.example.springweb.web.dto;
+package com.example.springcore.service.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

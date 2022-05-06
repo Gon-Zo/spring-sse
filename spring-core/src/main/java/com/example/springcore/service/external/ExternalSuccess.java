@@ -1,4 +1,4 @@
-package com.example.springcore.external;
+package com.example.springcore.service.external;
 
 public interface ExternalSuccess {
 

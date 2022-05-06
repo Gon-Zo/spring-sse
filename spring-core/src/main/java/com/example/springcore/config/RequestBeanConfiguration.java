@@ -1,6 +1,6 @@
-package com.example.springweb.config;
+package com.example.springcore.config;
 
-import com.example.springweb.web.dto.ValueDTO;
+import com.example.springcore.service.dto.ValueDTO;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.context.annotation.RequestScope;

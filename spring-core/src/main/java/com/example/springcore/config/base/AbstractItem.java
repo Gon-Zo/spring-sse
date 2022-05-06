@@ -1,4 +1,4 @@
-package com.example.springcore.base;
+package com.example.springcore.config.base;
 
 public abstract class AbstractItem {
 
