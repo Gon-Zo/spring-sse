@@ -1,11 +1,11 @@
-package com.example.forkjoinpool.config;
+package com.example.springcore.config;
 
+import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.concurrent.ForkJoinPoolFactoryBean;
 
-@Configuration
-public class ThreadConfiguration {
+@Configurable
+public class ForkJoinPoolConfiguration {
 
   @Bean
   public ForkJoinPoolFactoryBean forkJoinPoolFactoryBean() {

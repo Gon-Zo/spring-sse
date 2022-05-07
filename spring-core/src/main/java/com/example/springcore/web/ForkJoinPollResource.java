@@ -1,6 +1,6 @@
-package com.example.forkjoinpool.web;
+package com.example.springcore.web;
 
-import com.example.forkjoinpool.service.ForkJoinService;
+import com.example.springcore.service.forkjoin.ForkJoinService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

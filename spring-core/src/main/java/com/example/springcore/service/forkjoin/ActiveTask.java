@@ -1,4 +1,4 @@
-package com.example.forkjoinpool.service.task;
+package com.example.springcore.service.forkjoin;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.example.forkjoinpool.service.task;
+package com.example.springcore.service.forkjoin;
 
 import lombok.extern.slf4j.Slf4j;
 

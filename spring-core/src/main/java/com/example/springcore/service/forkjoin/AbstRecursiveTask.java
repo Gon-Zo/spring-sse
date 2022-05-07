@@ -1,9 +1,9 @@
-package com.example.forkjoinpool.service.task;
+package com.example.springcore.service.forkjoin;
 
 import java.util.List;
-import java.util.concurrent.RecursiveAction;
+import java.util.concurrent.RecursiveTask;
 
-public abstract class AbstRecursiveAction<T> extends RecursiveAction {
+public abstract class AbstRecursiveTask<T, V> extends RecursiveTask<V> {
 
   protected void sleep(int millis) {
     try {

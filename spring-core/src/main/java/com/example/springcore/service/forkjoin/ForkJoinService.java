@@ -1,6 +1,5 @@
-package com.example.forkjoinpool.service;
+package com.example.springcore.service.forkjoin;
 
-import com.example.forkjoinpool.service.task.ActiveTask;
 import lombok.RequiredArgsConstructor;
 import org.springframework.scheduling.concurrent.ForkJoinPoolFactoryBean;
 import org.springframework.stereotype.Service;
