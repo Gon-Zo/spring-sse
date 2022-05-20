@@ -57,6 +57,7 @@ project(":common") {
 project(":spring-sse") {
     dependencies {
         implementation project(path: ":common", configuration: 'default')
+        implementation 'org.springframework.boot:spring-boot-starter-aop'
         implementation("org.infinispan:infinispan-core:12.0.1.Final")
         implementation("org.infinispan:infinispan-commons:12.0.1.Final")
         implementation("org.infinispan:infinispan-marshaller-protostuff:12.0.1.Final")
