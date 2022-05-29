@@ -2,20 +2,14 @@ package com.example.springtransaction.domain;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
 import java.io.Serializable;
 
-@Getter
-@Embeddable
-@Builder
-@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@EqualsAndHashCode(of = {"itemId", "userId"})
 public class ItemUserKey implements Serializable {
 
-  @Column(nullable = false)
   private Long itemId;
 
-  @Column(nullable = false)
   private Long userId;
 }

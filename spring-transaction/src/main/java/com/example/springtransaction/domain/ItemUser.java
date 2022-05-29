@@ -4,22 +4,24 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.IdClass;
+import javax.persistence.PrePersist;
+import javax.persistence.Table;
 
 @Builder(builderMethodName = "initBuilder", builderClassName = "initBuilder")
 @Table
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
+@IdClass(value = ItemUserKey.class)
 public class ItemUser {
 
-  @EmbeddedId private ItemUserKey id;
+  @Id private Long itemId;
 
-  @MapsId("itemId")
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "item_id", referencedColumnName = "id", insertable = false, updatable = false)
-  private Item item;
+  @Id private Long userId;
 
   private Integer amount;
 

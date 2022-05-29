@@ -21,6 +21,10 @@ public class InitDTO {
 
   public ItemUser toEntity(Long userId, Item item) {
     ItemUserKey id = ItemUserKey.builder().itemId(productId).userId(userId).build();
-    return ItemUser.initBuilder().id(id).amount(this.amount).item(item).build();
+    return ItemUser.initBuilder()
+        .userId(userId.longValue())
+        .itemId(item.getId())
+        .amount(this.amount)
+        .build();
   }
 }
