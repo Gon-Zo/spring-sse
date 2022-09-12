@@ -1,7 +1,7 @@
 package com.example.springweb.web;
 
-import com.example.springweb.domain.CurrentDate;
-import com.example.springweb.repository.CurrentRepository;
+import com.example.springweb.domain.db1.CurrentDate;
+import com.example.springweb.repository.db1.CurrentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

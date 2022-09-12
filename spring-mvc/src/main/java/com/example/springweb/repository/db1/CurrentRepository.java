@@ -1,6 +1,6 @@
-package com.example.springweb.repository;
+package com.example.springweb.repository.db1;
 
-import com.example.springweb.domain.CurrentDate;
+import com.example.springweb.domain.db1.CurrentDate;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

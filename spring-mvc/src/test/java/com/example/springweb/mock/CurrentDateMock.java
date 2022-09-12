@@ -1,6 +1,6 @@
 package com.example.springweb.mock;
 
-import com.example.springweb.domain.CurrentDate;
+import com.example.springweb.domain.db1.CurrentDate;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

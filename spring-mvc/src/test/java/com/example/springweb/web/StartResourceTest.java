@@ -1,8 +1,8 @@
 package com.example.springweb.web;
 
-import com.example.springweb.domain.CurrentDate;
+import com.example.springweb.domain.db1.CurrentDate;
 import com.example.springweb.mock.CurrentDateMock;
-import com.example.springweb.repository.CurrentRepository;
+import com.example.springweb.repository.db1.CurrentRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

@@ -2,8 +2,3 @@ spring:
   profiles:
     active: A
 
-#
-#datasource:
-#  mysql:
-#    url:
-#    password:

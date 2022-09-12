@@ -1,7 +1,7 @@
 package com.example.springweb.web;
 
 import com.example.springweb.serivce.AsyncService;
-import com.example.springweb.web.dto.HelloDTO;
+import com.example.springweb.serivce.dto.HelloDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;

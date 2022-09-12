@@ -1,6 +1,5 @@
 package com.example.springweb;
 
-import com.example.common.config.db.LocalDBConstants;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
@@ -8,8 +7,9 @@ import org.springframework.context.annotation.ComponentScan;
 import javax.annotation.PostConstruct;
 import java.util.TimeZone;
 
-@SpringBootApplication
-@ComponentScan(basePackages = {"com.example.springweb", LocalDBConstants.LOCAL_DB_SCAN_PATH})
+@SpringBootApplication(scanBasePackages = {
+        "com.example.springweb"
+})
 public class SpringWebApplication {
 
   public static void main(String[] args) {

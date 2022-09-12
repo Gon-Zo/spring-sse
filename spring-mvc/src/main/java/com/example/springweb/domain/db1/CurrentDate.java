@@ -1,4 +1,4 @@
-package com.example.springweb.domain;
+package com.example.springweb.domain.db1;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;

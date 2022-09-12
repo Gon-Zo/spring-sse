@@ -1,4 +1,4 @@
-package com.example.springweb.web.dto;
+package com.example.springweb.serivce.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
