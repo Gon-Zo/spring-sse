@@ -15,6 +15,8 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
 
+import static com.example.springweb.config.db.DefaultValue.DB2_TRANSACTION_MANAGER;
+
 @Configuration
 @EnableJpaRepositories(
         basePackages = "com.example.springweb.repository.db2",
@@ -45,7 +47,7 @@ public class Db2Configuration {
                 .build();
     }
 
-    @Bean(name = "db2TransactionManager")
+    @Bean(name = DB2_TRANSACTION_MANAGER)
     public PlatformTransactionManager db1TransactionManager(
             @Qualifier("db2EntityManagerFactory") LocalContainerEntityManagerFactoryBean entityManagerFactory) {
         JpaTransactionManager transactionManager = new JpaTransactionManager(entityManagerFactory.getObject());

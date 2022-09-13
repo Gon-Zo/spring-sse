@@ -21,7 +21,7 @@ public class CertifiedFilter extends OncePerRequestFilter {
 
   private final String X_CUSTOM_TOKEN = "X-CUSTOM-TOKEN";
 
-  private final Set<String> skipUrls = Set.of("/api/**");
+  private final Set<String> skipUrls = Set.of("/api/**" );
 
   private final AntPathMatcher matcher = new AntPathMatcher();
 

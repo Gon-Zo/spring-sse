@@ -16,6 +16,8 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
 
+import static com.example.springweb.config.db.DefaultValue.DB1_TRANSACTION_MANAGER;
+
 @Configuration
 @EnableJpaRepositories(
         basePackages = "com.example.springweb.repository.db1",
@@ -49,7 +51,7 @@ public class Db1Configuration {
     }
 
     @Primary
-    @Bean(name = "db1TransactionManager")
+    @Bean(name = DB1_TRANSACTION_MANAGER)
     public PlatformTransactionManager db1TransactionManager(
             @Qualifier("db1EntityManagerFactory") LocalContainerEntityManagerFactoryBean entityManagerFactory) {
         JpaTransactionManager transactionManager = new JpaTransactionManager(entityManagerFactory.getObject());
