@@ -16,14 +16,14 @@ public class ProductUser {
 
   @EmbeddedId private ProductUserKey id;
 
-  @MapsId("productId")
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(
-      name = "product_id",
-      referencedColumnName = "id",
-      insertable = false,
-      updatable = false)
-  private Product product;
+//  @MapsId("productId")
+//  @ManyToOne(fetch = FetchType.LAZY)
+//  @JoinColumn(
+//      name = "product_id",
+//      referencedColumnName = "id",
+//      insertable = false,
+//      updatable = false)
+//  private Product product;
 
   private Integer amount;
 
