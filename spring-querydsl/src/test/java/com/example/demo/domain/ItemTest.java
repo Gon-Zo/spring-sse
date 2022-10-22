@@ -1,6 +1,6 @@
 package com.example.demo.domain;
 
-import com.example.demo.Demo1Application;
+import com.example.demo.QuerydslApplication;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -12,7 +12,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 
-@SpringBootTest(classes = Demo1Application.class)
+@SpringBootTest(classes = QuerydslApplication.class)
 class ItemTest {
 
   @Autowired EntityManagerFactory entityManagerFactory;
