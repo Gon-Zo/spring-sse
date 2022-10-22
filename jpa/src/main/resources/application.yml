@@ -13,7 +13,12 @@ spring:
   application:
     name: spring-transaction
   profiles:
-    active: h2, jpa
+    active: jpa
+  datasource:
+    url: jdbc:mysql://localhost:63306/default
+    username: root
+    password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
 
 #  tomcat.accept-count: 100 # Maximum queue length for incoming connection requests when all possible request processing threads are in use.
