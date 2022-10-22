@@ -13,6 +13,6 @@ include('spring-sse'
         , 'spring-mvc'
         , 'spring-forkjoinpool'
         , 'spring-querydsl'
-        , 'spring-transaction'
+        , 'jpa'
         , 'spring-core'
 )

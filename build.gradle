@@ -83,8 +83,7 @@ project(':spring-querydsl') {
     }
 }
 
-// todo : detached project
-project(':spring-transaction') {
+project(':jpa') {
     dependencies {
         implementation project(path: ":common", configuration: 'default')
         implementation 'org.springframework.retry:spring-retry'
