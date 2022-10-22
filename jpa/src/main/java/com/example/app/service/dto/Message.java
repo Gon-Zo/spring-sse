@@ -10,7 +10,7 @@ public class Message {
     private String code;
 
     private String detail;
-   
+
     public static Message of(String code, String detail) {
         return new Message(code, detail);
     }
