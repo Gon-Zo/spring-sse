@@ -4,7 +4,7 @@ spring:
   application:
     name: spring-mvc
   profiles:
-    active: jpa,test1
+    active: jpa, test1
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: Asia/Seoul
@@ -12,14 +12,14 @@ spring:
 datasource:
   db1:
     driverClassName: com.mysql.cj.jdbc.Driver
-    jdbcUrl: jdbc:mysql://localhost:3306/default
+    jdbcUrl: jdbc:mysql://localhost:53306/default
     username: root
     password: 1234
     autoCommit: false
 
   db2:
     driverClassName: org.postgresql.Driver
-    jdbcUrl: jdbc:postgresql://localhost:5432/postgres
+    jdbcUrl: jdbc:postgresql://localhost:55432/postgres
     username: postgres
     password: 1234
     autoCommit: false
