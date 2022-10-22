@@ -7,7 +7,9 @@
 
 ## desc
 
-* spring bean di example code
+* spring bean di example code (factory pattern)
+* spring fork join pool example code
+* logging example code
 
 ## run on
 
