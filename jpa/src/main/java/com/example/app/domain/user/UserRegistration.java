@@ -62,7 +62,6 @@ public class UserRegistration extends BaseTimeEntity {
     private String verificationToken;
 
     @Comment("넘어간 시간..?")
-    @Column(nullable = false)
     private LocalDateTime enteredDate;
 
     @OneToOne(fetch = FetchType.LAZY)

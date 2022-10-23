@@ -1,9 +1,6 @@
 package com.example.app.mock;
 
-import com.example.app.domain.user.User;
-import com.example.app.domain.user.UserMeta;
-import com.example.app.domain.user.UserPassword;
-import com.example.app.domain.user.UserRegistration;
+import com.example.app.domain.user.*;
 
 /**
  * Test 케이스를 작성을 하면서 발생되는 비지니스 로직
@@ -17,7 +14,7 @@ public class UserUtils {
      * @param userPassword
      * @return
      */
-    public static User newUser(User user, UserPassword userPassword, UserMeta userMeta, UserRegistration userRegistration) {
+    public static User newUser(User user, UserPassword userPassword, UserMeta userMeta, UserRegistration userRegistration, UserAgreement userAgreement) {
 
         return User.builder()
                 .email(user.getEmail())
@@ -27,6 +24,7 @@ public class UserUtils {
                 .userPassword(userPassword)
                 .userMeta(userMeta)
                 .userRegistration(userRegistration)
+                .userAgreement(userAgreement)
                 .build();
     }
 }

@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Comment;
 
 import javax.persistence.*;
+import java.util.Optional;
 
 @Getter
 @Entity
@@ -28,7 +29,13 @@ public class UserAgreement extends BaseTimeEntity {
     @Comment("동의 여부")
     private Boolean isAgreed;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
+
+    @PrePersist
+    void insert() {
+        this.isAgreed = Optional.ofNullable(this.isAgreed).orElse(Boolean.FALSE);
+        this.agreementType = Optional.ofNullable(this.agreementType).orElse("NONE");
+    }
 }

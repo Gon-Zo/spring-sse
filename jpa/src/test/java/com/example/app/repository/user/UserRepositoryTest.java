@@ -2,10 +2,7 @@ package com.example.app.repository.user;
 
 import com.example.app.config.TestRepositoryConfig;
 import com.example.app.constract.StatusType;
-import com.example.app.domain.user.User;
-import com.example.app.domain.user.UserMeta;
-import com.example.app.domain.user.UserPassword;
-import com.example.app.domain.user.UserRegistration;
+import com.example.app.domain.user.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -74,9 +71,18 @@ class UserRepositoryTest {
         assertEquals(entity.getUserRegistration().getEnteredDate(), mock.getUserRegistration().getEnteredDate());
         assertNotNull(entity.getUserRegistration().getCreatedDate());
         assertNotNull(entity.getUserRegistration().getUpdatedDate());
+
+        //UserAgreement
+        assertNotNull(entity.getUserAgreement().getId());
+        assertEquals(entity.getUserAgreement().getAgreementType(), mock.getUserAgreement().getAgreementType());
+        assertEquals(entity.getUserAgreement().getIsAgreed(), mock.getUserAgreement().getIsAgreed());
+        assertNotNull(entity.getUserAgreement().getCreatedDate());
+        assertNotNull(entity.getUserAgreement().getUpdatedDate());
     }
 
     private User getUser() {
+
+        UserAgreement userAgreement = readJoin("json/user_agreement/save_1.json", UserAgreement.class);
 
         UserRegistration userRegistration = readJoin("json/user_registration/save_1.json", UserRegistration.class);
 
@@ -86,6 +92,6 @@ class UserRepositoryTest {
 
         User mock = readJoin("json/user/save_1.json", User.class);
 
-        return newUser(mock, userPasswordMock, userMeta, userRegistration);
+        return newUser(mock, userPasswordMock, userMeta, userRegistration, userAgreement);
     }
 }

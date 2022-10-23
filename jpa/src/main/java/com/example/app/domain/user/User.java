@@ -72,8 +72,7 @@ public class User extends BaseTimeEntity {
     @OneToOne(mappedBy = "user")
     private UserDevice userDevice;
 
-    @JsonIgnore
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
     private UserAgreement userAgreement;
 
     @JsonIgnore
