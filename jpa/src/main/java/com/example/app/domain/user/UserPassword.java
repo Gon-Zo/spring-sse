@@ -19,10 +19,18 @@ public class UserPassword extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
-    @JoinColumn(name = "user_id", nullable = false)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
     private User user;
 
     @Column(name = "password_hash", nullable = false)
     private String password;
+
+    public static UserPassword newUserPassword(String password) {
+        return new UserPassword(password);
+    }
+
+    private UserPassword(String password) {
+        this.password = password;
+    }
 }

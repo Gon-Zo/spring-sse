@@ -26,8 +26,7 @@ public class User extends BaseTimeEntity {
     @Enumerated(EnumType.STRING)
     private StatusType status;
 
-    @JsonIgnore
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
     private UserPassword userPassword;
 
     @JsonIgnore

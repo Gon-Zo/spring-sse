@@ -3,7 +3,9 @@ package com.example.app.repository.user;
 import com.example.app.config.TestRepositoryConfig;
 import com.example.app.constract.StatusType;
 import com.example.app.domain.user.User;
+import com.example.app.domain.user.UserPassword;
 import com.example.app.mock.MockUtil;
+import com.example.app.mock.UserUtils;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -29,14 +31,27 @@ class UserRepositoryTest {
     @DisplayName("회원가입 로직")
     void save() {
 
+        // given
+        UserPassword userPasswordMock = MockUtil.readJoin("json/user_password/save_1.json", UserPassword.class);
+
         User mock = MockUtil.readJoin("json/user/save_1.json", User.class);
 
+        mock = UserUtils.reconverUser(mock, userPasswordMock);
+
+        // when
         User entity = userRepository.save(mock);
 
+        // user
         assertNotNull(entity.getId());
         assertEquals(entity.getEmail(), mock.getEmail());
         assertEquals(entity.getStatus(), StatusType.JOIN);
         assertNotNull(entity.getCreatedDate());
         assertNotNull(entity.getUpdatedDate());
+
+        //user password
+        assertNotNull(entity.getUserPassword().getId());
+        assertEquals(entity.getUserPassword().getPassword(), userPasswordMock.getPassword());
+        assertNotNull(entity.getUserPassword().getCreatedDate());
+        assertNotNull(entity.getUserPassword().getUpdatedDate());
     }
 }
