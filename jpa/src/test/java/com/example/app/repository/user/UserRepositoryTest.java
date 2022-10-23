@@ -42,6 +42,7 @@ class UserRepositoryTest {
         assertNotNull(entity.getId());
         assertEquals(entity.getEmail(), mock.getEmail());
         assertEquals(entity.getStatus(), StatusType.JOIN);
+        assertEquals(entity.getIsEmailVerified(), Boolean.FALSE);
         assertNotNull(entity.getCreatedDate());
         assertNotNull(entity.getUpdatedDate());
 
@@ -50,7 +51,6 @@ class UserRepositoryTest {
         assertEquals(entity.getUserPassword().getPassword(), mock.getUserPassword().getPassword());
         assertNotNull(entity.getUserPassword().getCreatedDate());
         assertNotNull(entity.getUserPassword().getUpdatedDate());
-
 
         assertNotNull(entity.getUserMeta().getId());
         assertEquals(entity.getUserMeta().getBirthday(), mock.getUserMeta().getBirthday());
