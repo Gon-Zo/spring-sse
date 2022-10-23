@@ -8,7 +8,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.hibernate.annotations.Comment;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
-import org.springframework.util.StreamUtils;
 
 import javax.persistence.*;
 import java.util.Optional;
@@ -59,8 +58,7 @@ public class User extends BaseTimeEntity {
     @OneToOne(mappedBy = "user")
     private UserCertification userCertification;
 
-    @JsonIgnore
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
     private UserRegistration userRegistration;
 
     @JsonIgnore

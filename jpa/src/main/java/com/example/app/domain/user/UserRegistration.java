@@ -54,7 +54,7 @@ public class UserRegistration extends BaseTimeEntity {
     @Comment("넘어간 시간..?")
     private LocalDateTime enteredDate;
 
-    @OneToOne
-    @JoinColumn(name = "user_id", nullable = false)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
     private User user;
 }

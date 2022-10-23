@@ -1,0 +1,13 @@
+{
+  "type": "MAIL",
+  "platform": "android",
+  "store": "one",
+  "country": "ko",
+  "ip": "0.0.0.0.0",
+  "channel": "naver.com",
+  "referer": "naver.com",
+  "landingUrl": "naver.com",
+  "isAgreedMarketingEmail": true,
+  "verificationToken": "xxxxxxx",
+  "enteredDate": "2022-10-23 12:49:44"
+}
