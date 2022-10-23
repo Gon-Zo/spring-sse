@@ -5,6 +5,7 @@ import com.example.app.constract.StatusType;
 import com.example.app.domain.user.User;
 import com.example.app.domain.user.UserMeta;
 import com.example.app.domain.user.UserPassword;
+import com.example.app.domain.user.UserRegistration;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -52,13 +53,32 @@ class UserRepositoryTest {
         assertNotNull(entity.getUserPassword().getCreatedDate());
         assertNotNull(entity.getUserPassword().getUpdatedDate());
 
+        // usermeta
         assertNotNull(entity.getUserMeta().getId());
         assertEquals(entity.getUserMeta().getBirthday(), mock.getUserMeta().getBirthday());
         assertNotNull(entity.getUserMeta().getCreatedDate());
         assertNotNull(entity.getUserMeta().getUpdatedDate());
+
+        //UserRegistration
+        assertNotNull(entity.getUserRegistration().getId());
+        assertEquals(entity.getUserRegistration().getType(), mock.getUserRegistration().getType());
+        assertEquals(entity.getUserRegistration().getPlatform(), mock.getUserRegistration().getPlatform());
+        assertEquals(entity.getUserRegistration().getStore(), mock.getUserRegistration().getStore());
+        assertEquals(entity.getUserRegistration().getCountry(), mock.getUserRegistration().getCountry());
+        assertEquals(entity.getUserRegistration().getIp(), mock.getUserRegistration().getIp());
+        assertEquals(entity.getUserRegistration().getChannel(), mock.getUserRegistration().getChannel());
+        assertEquals(entity.getUserRegistration().getReferer(), mock.getUserRegistration().getReferer());
+        assertEquals(entity.getUserRegistration().getLandingUrl(), mock.getUserRegistration().getLandingUrl());
+        assertEquals(entity.getUserRegistration().getIsAgreedMarketingEmail(), mock.getUserRegistration().getIsAgreedMarketingEmail());
+        assertEquals(entity.getUserRegistration().getVerificationToken(), mock.getUserRegistration().getVerificationToken());
+        assertEquals(entity.getUserRegistration().getEnteredDate(), mock.getUserRegistration().getEnteredDate());
+        assertNotNull(entity.getUserRegistration().getCreatedDate());
+        assertNotNull(entity.getUserRegistration().getUpdatedDate());
     }
 
     private User getUser() {
+
+        UserRegistration userRegistration = readJoin("json/user_registration/save_1.json", UserRegistration.class);
 
         UserMeta userMeta = readJoin("json/user_meta/save_1.json", UserMeta.class);
 
@@ -66,6 +86,6 @@ class UserRepositoryTest {
 
         User mock = readJoin("json/user/save_1.json", User.class);
 
-        return newUser(mock, userPasswordMock, userMeta);
+        return newUser(mock, userPasswordMock, userMeta, userRegistration);
     }
 }
