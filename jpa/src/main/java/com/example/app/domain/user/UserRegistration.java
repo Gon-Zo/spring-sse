@@ -2,6 +2,7 @@ package com.example.app.domain.user;
 
 import com.example.app.constract.RegistrationType;
 import com.example.app.domain.base.BaseTimeEntity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.annotations.Comment;
 
@@ -64,6 +65,7 @@ public class UserRegistration extends BaseTimeEntity {
     @Comment("넘어간 시간..?")
     private LocalDateTime enteredDate;
 
+    @JsonIgnore
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;

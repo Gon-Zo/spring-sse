@@ -15,7 +15,6 @@ public class JoinService {
 
     @Transactional
     public User join(JoinDTO dto) {
-
-        return null;
+        return userRepository.save(dto.toEntity());
     }
 }
