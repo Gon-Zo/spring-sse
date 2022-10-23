@@ -5,8 +5,6 @@ import com.example.app.constract.StatusType;
 import com.example.app.domain.user.User;
 import com.example.app.domain.user.UserMeta;
 import com.example.app.domain.user.UserPassword;
-import com.example.app.mock.MockUtil;
-import com.example.app.mock.UserUtils;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -15,8 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-
-import javax.persistence.JoinColumn;
 
 import static com.example.app.mock.MockUtil.readJoin;
 import static com.example.app.mock.UserUtils.newUser;
