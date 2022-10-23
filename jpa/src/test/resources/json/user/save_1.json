@@ -1,3 +1,6 @@
 {
-  "email": "test@naver.com"
+  "email": "test@naver.com",
+  "status": "JOIN",
+  "isEmailVerified": false,
+  "loginType": "MAIL"
 }

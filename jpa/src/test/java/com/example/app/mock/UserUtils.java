@@ -19,7 +19,11 @@ public class UserUtils {
      */
     public static User newUser(User user, UserPassword userPassword, UserMeta userMeta, UserRegistration userRegistration) {
 
-        return User.builder().email(user.getEmail())
+        return User.builder()
+                .email(user.getEmail())
+                .status(user.getStatus())
+                .isEmailVerified(user.getIsEmailVerified())
+                .loginType(user.getLoginType())
                 .userPassword(userPassword)
                 .userMeta(userMeta)
                 .userRegistration(userRegistration)

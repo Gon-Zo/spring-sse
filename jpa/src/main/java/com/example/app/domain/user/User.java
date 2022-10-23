@@ -1,9 +1,11 @@
 package com.example.app.domain.user;
 
+import com.example.app.constract.LoginType;
 import com.example.app.constract.StatusType;
 import com.example.app.domain.base.BaseTimeEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.annotations.Comment;
 import org.hibernate.annotations.DynamicInsert;
@@ -29,6 +31,11 @@ public class User extends BaseTimeEntity {
     @Comment("사용자 계정명")
     @Column(nullable = false, unique = true)
     private String email;
+
+    @Comment("로그인 타입")
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private LoginType loginType;
 
     @Comment("사용자 상태")
     @Column(nullable = false)
@@ -75,7 +82,14 @@ public class User extends BaseTimeEntity {
 
     @PrePersist
     void insert() {
+
         this.status = StringUtils.isNotEmpty(this.guestName) ? StatusType.GUEST : StatusType.JOIN;
+
         this.isEmailVerified = Optional.ofNullable(this.isEmailVerified).orElse(Boolean.FALSE);
+
+        if (LoginType.SOCIAL == this.loginType && ObjectUtils.isEmpty(this.userSocial)) {
+            // todo : social exception
+            throw new RuntimeException("social empty exception");
+        }
     }
 }
