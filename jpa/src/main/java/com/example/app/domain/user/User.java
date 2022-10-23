@@ -4,9 +4,11 @@ import com.example.app.constract.StatusType;
 import com.example.app.domain.base.BaseTimeEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+import org.apache.commons.lang3.StringUtils;
 import org.hibernate.annotations.Comment;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
+import org.springframework.util.StreamUtils;
 
 import javax.persistence.*;
 import java.util.Optional;
@@ -75,7 +77,7 @@ public class User extends BaseTimeEntity {
 
     @PrePersist
     void insert() {
-        this.status = StatusType.JOIN;
+        this.status = StringUtils.isNotEmpty(this.guestName) ? StatusType.GUEST : StatusType.JOIN;
         this.isEmailVerified = Optional.ofNullable(this.isEmailVerified).orElse(Boolean.FALSE);
     }
 }
