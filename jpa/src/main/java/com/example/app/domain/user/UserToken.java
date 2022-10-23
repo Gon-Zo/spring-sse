@@ -5,6 +5,7 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Comment;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -25,9 +26,12 @@ public class UserToken extends BaseTimeEntity {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @Comment("토큰값")
     private String token;
 
+    @Comment("만료일")
     private LocalDateTime expiredDate;
+    @Comment("삭제일")
     private LocalDateTime deletedDate;
 
     public void deletedToken(LocalDateTime deletedDate) {

@@ -5,6 +5,7 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Comment;
 
 import javax.persistence.*;
 
@@ -23,6 +24,7 @@ public class UserPassword extends BaseTimeEntity {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @Comment("비밀번호")
     @Column(name = "password_hash", nullable = false)
     private String password;
 

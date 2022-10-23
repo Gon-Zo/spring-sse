@@ -7,6 +7,7 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Comment;
 
 import javax.persistence.*;
 import java.util.Optional;
@@ -27,10 +28,12 @@ public class UserMeta extends BaseTimeEntity {
     private User user;
 
     @Embedded
+    @Comment("생년월일")
     private Birthday birthday;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
+    @Comment("성별")
     private Gender gender;
 
     @PrePersist
