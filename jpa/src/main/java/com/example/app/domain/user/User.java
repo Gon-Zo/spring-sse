@@ -32,10 +32,12 @@ public class User extends BaseTimeEntity {
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
     private UserMeta userMeta;
 
+    // this action is login add token data
     @JsonIgnore
     @OneToOne(mappedBy = "user")
     private UserToken userToken;
 
+    // this action is certification
     @JsonIgnore
     @OneToOne(mappedBy = "user")
     private UserCertification userCertification;

@@ -22,7 +22,7 @@ public class UserRegistration extends BaseTimeEntity {
     @Enumerated(EnumType.STRING)
     private RegistrationType type;
 
-    private String plaform;
+    private String platform;
 
     private String store;
 
