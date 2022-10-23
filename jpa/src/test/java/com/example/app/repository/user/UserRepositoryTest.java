@@ -15,6 +15,8 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import javax.persistence.JoinColumn;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -32,11 +34,7 @@ class UserRepositoryTest {
     void save() {
 
         // given
-        UserPassword userPasswordMock = MockUtil.readJoin("json/user_password/save_1.json", UserPassword.class);
-
-        User mock = MockUtil.readJoin("json/user/save_1.json", User.class);
-
-        mock = UserUtils.reconverUser(mock, userPasswordMock);
+        User mock = getUser();
 
         // when
         User entity = userRepository.save(mock);
@@ -50,8 +48,16 @@ class UserRepositoryTest {
 
         //user password
         assertNotNull(entity.getUserPassword().getId());
-        assertEquals(entity.getUserPassword().getPassword(), userPasswordMock.getPassword());
+        assertEquals(entity.getUserPassword().getPassword(), mock.getUserPassword().getPassword());
         assertNotNull(entity.getUserPassword().getCreatedDate());
         assertNotNull(entity.getUserPassword().getUpdatedDate());
+    }
+
+    private User getUser() {
+        UserPassword userPasswordMock = MockUtil.readJoin("json/user_password/save_1.json", UserPassword.class);
+
+        User mock = MockUtil.readJoin("json/user/save_1.json", User.class);
+
+        return UserUtils.reconverUser(mock, userPasswordMock);
     }
 }

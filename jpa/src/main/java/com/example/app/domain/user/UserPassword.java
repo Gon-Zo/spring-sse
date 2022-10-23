@@ -26,6 +26,7 @@ public class UserPassword extends BaseTimeEntity {
     @Column(name = "password_hash", nullable = false)
     private String password;
 
+    @Transient
     public static UserPassword newUserPassword(String password) {
         return new UserPassword(password);
     }
