@@ -1,6 +1,7 @@
 package com.example.app.mock;
 
 import com.example.app.domain.user.User;
+import com.example.app.domain.user.UserMeta;
 import com.example.app.domain.user.UserPassword;
 
 /**
@@ -15,8 +16,11 @@ public class UserUtils {
      * @param userPassword
      * @return
      */
-    public static User reconverUser(User user, UserPassword userPassword) {
+    public static User newUser(User user, UserPassword userPassword, UserMeta userMeta) {
 
-        return User.builder().email(user.getEmail()).userPassword(userPassword).build();
+        return User.builder().email(user.getEmail())
+                .userPassword(userPassword)
+                .userMeta(userMeta)
+                .build();
     }
 }

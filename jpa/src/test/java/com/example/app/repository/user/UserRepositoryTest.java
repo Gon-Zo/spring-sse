@@ -3,6 +3,7 @@ package com.example.app.repository.user;
 import com.example.app.config.TestRepositoryConfig;
 import com.example.app.constract.StatusType;
 import com.example.app.domain.user.User;
+import com.example.app.domain.user.UserMeta;
 import com.example.app.domain.user.UserPassword;
 import com.example.app.mock.MockUtil;
 import com.example.app.mock.UserUtils;
@@ -17,6 +18,8 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import javax.persistence.JoinColumn;
 
+import static com.example.app.mock.MockUtil.readJoin;
+import static com.example.app.mock.UserUtils.newUser;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -51,13 +54,22 @@ class UserRepositoryTest {
         assertEquals(entity.getUserPassword().getPassword(), mock.getUserPassword().getPassword());
         assertNotNull(entity.getUserPassword().getCreatedDate());
         assertNotNull(entity.getUserPassword().getUpdatedDate());
+
+
+        assertNotNull(entity.getUserMeta().getId());
+        assertEquals(entity.getUserMeta().getBirthday(), mock.getUserMeta().getBirthday());
+        assertNotNull(entity.getUserMeta().getCreatedDate());
+        assertNotNull(entity.getUserMeta().getUpdatedDate());
     }
 
     private User getUser() {
-        UserPassword userPasswordMock = MockUtil.readJoin("json/user_password/save_1.json", UserPassword.class);
 
-        User mock = MockUtil.readJoin("json/user/save_1.json", User.class);
+        UserMeta userMeta = readJoin("json/user_meta/save_1.json", UserMeta.class);
 
-        return UserUtils.reconverUser(mock, userPasswordMock);
+        UserPassword userPasswordMock = readJoin("json/user_password/save_1.json", UserPassword.class);
+
+        User mock = readJoin("json/user/save_1.json", User.class);
+
+        return newUser(mock, userPasswordMock, userMeta);
     }
 }
