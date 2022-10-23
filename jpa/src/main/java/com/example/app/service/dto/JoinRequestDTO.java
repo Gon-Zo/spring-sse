@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class JoinDTO {
+public class JoinRequestDTO {
 
     private String email;
 

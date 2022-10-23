@@ -34,7 +34,19 @@ public class UserToken extends BaseTimeEntity {
     @Comment("삭제일")
     private LocalDateTime deletedDate;
 
+    @Transient
     public void deletedToken(LocalDateTime deletedDate) {
         this.deletedDate = Optional.ofNullable(deletedDate).orElse(LocalDateTime.now());
+    }
+
+    @Transient
+    public static UserToken newUserToken(String token, User user, LocalDateTime expiredDate) {
+        return new UserToken(token, user, expiredDate);
+    }
+
+    private UserToken(String token, User user, LocalDateTime expiredDate) {
+        this.token = token;
+        this.user = user;
+        this.expiredDate = expiredDate;
     }
 }
