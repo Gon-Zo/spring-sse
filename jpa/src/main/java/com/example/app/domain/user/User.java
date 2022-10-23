@@ -4,9 +4,15 @@ import com.example.app.constract.StatusType;
 import com.example.app.domain.base.BaseTimeEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+import org.hibernate.annotations.Comment;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
+import java.util.Optional;
 
+@DynamicInsert
+@DynamicUpdate
 @Builder
 @Getter
 @Table
@@ -19,12 +25,21 @@ public class User extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Comment("사용자 계정명")
     @Column(nullable = false, unique = true)
     private String email;
 
+    @Comment("사용자 상태")
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private StatusType status;
+
+    @Comment("이메일 인증 여부")
+    @Column(name = "email_verified_yn", nullable = false)
+    private Boolean isEmailVerified;
+
+    @Comment("계스트 계정명")
+    private String guestName;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
     private UserPassword userPassword;
@@ -61,5 +76,6 @@ public class User extends BaseTimeEntity {
     @PrePersist
     void insert() {
         this.status = StatusType.JOIN;
+        this.isEmailVerified = Optional.ofNullable(this.isEmailVerified).orElse(Boolean.FALSE);
     }
 }
