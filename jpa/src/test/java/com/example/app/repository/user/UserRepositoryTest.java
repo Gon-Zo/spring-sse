@@ -27,8 +27,8 @@ class UserRepositoryTest {
 
     @Test
     @Order(1)
-    @DisplayName("회원가입 로직")
-    void save() {
+    @DisplayName("회원가입 로직 Mail 가입")
+    void save_mail_user_case() {
 
         // given
         User mock = getUser();
