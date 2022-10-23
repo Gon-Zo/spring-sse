@@ -2,6 +2,7 @@ package com.example.app.domain.user;
 
 import com.example.app.constract.StatusType;
 import com.example.app.domain.base.BaseTimeEntity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -25,27 +26,35 @@ public class User extends BaseTimeEntity {
     @Enumerated(EnumType.STRING)
     private StatusType status;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "user")
     private UserPassword userPassword;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "user")
     private UserMeta userMeta;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "user")
     private UserToken userToken;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "user")
     private UserCertification userCertification;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "user")
     private UserRegistration userRegistration;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "user")
     private UserDevice userDevice;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "user")
     private UserAgreement userAgreement;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "user")
     private UserSocial userSocial;
 }
