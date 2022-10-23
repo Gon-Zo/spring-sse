@@ -93,5 +93,7 @@ project(':jpa') {
         // core gradle di add
         implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
         implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+        testRuntimeOnly 'com.h2database:h2'
     }
 }

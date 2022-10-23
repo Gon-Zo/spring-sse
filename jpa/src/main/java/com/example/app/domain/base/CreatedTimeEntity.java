@@ -2,7 +2,7 @@ package com.example.app.domain.base;
 
 import lombok.Getter;
 import org.hibernate.annotations.Comment;
-import org.springframework.data.annotation.CreatedDate;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @MappedSuperclass
 public abstract class CreatedTimeEntity {
 
-    @CreatedDate
+    @CreationTimestamp
     @Comment("생성일")
     private LocalDateTime createdDate;
 }

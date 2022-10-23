@@ -57,4 +57,9 @@ public class User extends BaseTimeEntity {
     @JsonIgnore
     @OneToOne(mappedBy = "user")
     private UserSocial userSocial;
+
+    @PrePersist
+    void insert() {
+        this.status = StatusType.JOIN;
+    }
 }
