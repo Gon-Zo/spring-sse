@@ -1,4 +1,4 @@
-package com.example.app.web;
+package com.example.app.web.user;
 
 import com.example.app.domain.user.User;
 import com.example.app.service.dto.JoinRequestDTO;

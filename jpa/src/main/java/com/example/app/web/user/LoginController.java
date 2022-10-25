@@ -1,4 +1,4 @@
-package com.example.app.web;
+package com.example.app.web.user;
 
 import com.example.app.service.dto.LoginDTO;
 import com.example.app.service.user.LoginService;
