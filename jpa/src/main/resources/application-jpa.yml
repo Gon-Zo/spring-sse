@@ -18,8 +18,6 @@ spring:
       hibernate.jdbc.lob.non_contextual_creation: true
     show-sql: true
     open-in-view: true
-    hibernate:
-      ddl-auto: update
 
 
 logging:

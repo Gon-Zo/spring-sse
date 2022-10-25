@@ -19,7 +19,11 @@ spring:
     username: root
     password: 1234
     driver-class-name: com.mysql.cj.jdbc.Driver
-
+    hikari:
+      auto-commit: false
+  jpa:
+    hibernate:
+      ddl-auto: update
 
 #  tomcat.accept-count: 100 # Maximum queue length for incoming connection requests when all possible request processing threads are in use.
 #  tomcat.additional-tld-skip-patterns: # Comma-separated list of additional patterns that match jars to ignore for TLD scanning.
