@@ -8,6 +8,7 @@ import com.example.app.service.dto.PostGroupRelInfo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,6 +27,11 @@ public class HelpController {
     @GetMapping
     public List<Posts> getPostsList() {
         return postsRepository.findAll();
+    }
+
+    @GetMapping("/test")
+    public Posts getPostsList_1() {
+        return postsRepository.findById_Id(1L);
     }
 
     @GetMapping("rel")

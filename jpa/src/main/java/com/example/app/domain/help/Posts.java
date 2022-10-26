@@ -1,19 +1,17 @@
 package com.example.app.domain.help;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import java.util.List;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Table
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-@EqualsAndHashCode
 public class Posts {
 
     @EmbeddedId
@@ -30,4 +28,8 @@ public class Posts {
 
     @Column(nullable = false)
     private String authorType;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "posts" , fetch = FetchType.LAZY)
+    private Set<PostGroupRel> postGroupRelSet = new HashSet<>();
 }
